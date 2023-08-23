@@ -4,7 +4,7 @@
   </p>
   <ul class="menu-list">
     {% for item in site.data.menu %}
-      <li><a href="{{ item.link }}">
+      <li><a href="{{ item.link }}" {% if page.url == item.link %}class="is-active"{% endif %}>
         {{ item.name }}
       </a></li>
     {% endfor %}
