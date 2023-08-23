@@ -1,0 +1,4 @@
+- name: Handbook
+  pages:
+    - name: About the Handbook
+      link: /handbook/about
