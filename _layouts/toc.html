@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<section class="hero is-medium is-light">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1">
+        {{ page.hero-title }}
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  
+  {% for group in site.data.toc %}
+    {% assign current_group_mod = forloop.index0 | modulo: 4 %}
+    {% if current_group_mod == 0 %}<div class="columns">{% endif %}
+      <div class="column">
+        <div class="card">
+          <div class="card-header">
+            <p class="card-header-title">
+              {{ group.name }}
+            </p>
+          </div>
+          <div class="card-content">
+            <aside class="menu">
+              <ul class="menu-list">
+                {% for item in group.pages %}
+                  <li><a href="{{ item.link }}">
+                    {{ item.name }}
+                  </a></li>
+                {% endfor %}
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </div>
+    {% assign next_group_mod = forloop.index0 | plus: 1 | modulo: 4 %}
+    {% if forloop.last or forloop.first == false and next_group_mod == 0 %}</div>{% endif %}
+  {% endfor %}
+
+</section>
